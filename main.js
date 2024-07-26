@@ -91,9 +91,13 @@ const gallons75 = distance / 23;
 
 
 // Will your budget be enough to cover the fuel expense?
-const enough55 = gallons55 * 3 <= budget;
-const enough60 = gallons60 * 3 <= budget;
-const enough75 = gallons75 * 3 <= budget;
+const cost55 = gallons55 * 3;
+const cost60 = gallons60 * 3;
+const cost75 = gallons75 * 3;
+
+const enough55 = cost55 <= budget;
+const enough60 = cost60 <= budget;
+const enough75 = cost75 <= budget;
 
 
 // How long will the trip take, in hours?
@@ -101,12 +105,18 @@ const time55 = distance / 55;
 const time60 = distance / 60;
 const time75 = distance / 75;
 
+
 // Compare the results when traveling at an average of 55, 60, and 75 miles per hour. Which makes the most sense for the trip?
+
+const canAfford55 = enough55 ? 'affordable' : 'not affordable';
+const canAfford60 = enough60 ? 'affordable' : 'not affordable';
+const canAfford75 = enough75 ? 'affordable' : 'not affordable';
+
 // Log the results of your calculations using string concatenation or template literals.
 
-console.log(`At 55 mph, you will need ${gallons55} gallons of fuel, which will cost $${gallons55 * 3}. You will arrive in ${time55} hours. It is ${enough55 ? 'affordable' : 'not affordable'}.`);
-console.log(`At 60 mph, you will need ${gallons60} gallons of fuel, which will cost $${gallons60 * 3}. You will arrive in ${time60} hours. It is ${enough60 ? 'affordable' : 'not affordable'}.`);
-console.log(`At 75 mph, you will need ${gallons75} gallons of fuel, which will cost $${gallons75 * 3}. You will arrive in ${time75} hours. It is ${enough75 ? 'affordable' : 'not affordable'}.`);
+console.log(`At 55 mph, you will need ${gallons55} gallons of fuel, which will cost $${cost55}. You will arrive in ${time55} hours. It is ${canAfford55}.`);
+console.log(`At 60 mph, you will need ${gallons60} gallons of fuel, which will cost $${cost60}. You will arrive in ${time60} hours. It is ${canAfford60}.`);
+console.log(`At 75 mph, you will need ${gallons75} gallons of fuel, which will cost $${cost75}. You will arrive in ${time75} hours. It is ${canAfford75}.`);
 
 
 
